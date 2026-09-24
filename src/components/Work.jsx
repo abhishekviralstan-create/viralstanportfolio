@@ -37,13 +37,23 @@ function Book({ index, setIndex, onClose }) {
   const first = useRef(true)
   const scroller = useRef(null)
   const [scrolled, setScrolled] = useState(false)
+  const [turn, setTurn] = useState(null)
   const mobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 800px)').matches
+
+  const go = useCallback(
+    (direction) => {
+      if (turn) return
+      setTurn({ direction, project: p })
+      setIndex((i) => (i + direction + projects.length) % projects.length)
+    },
+    [p, setIndex, turn],
+  )
 
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowRight') setIndex((i) => (i + 1) % projects.length)
-      if (e.key === 'ArrowLeft') setIndex((i) => (i - 1 + projects.length) % projects.length)
+      if (e.key === 'ArrowRight') go(1)
+      if (e.key === 'ArrowLeft') go(-1)
     }
     document.documentElement.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
@@ -53,7 +63,7 @@ function Book({ index, setIndex, onClose }) {
       window.removeEventListener('keydown', onKey)
       clearTimeout(t)
     }
-  }, [onClose, setIndex])
+  }, [go, onClose])
 
   useEffect(() => {
     setScrolled(false)
@@ -90,12 +100,12 @@ function Book({ index, setIndex, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={`${p.name} case study`}
-        style={{ '--f1': p.colors[0], '--f2': p.colors[1] }}
+        style={{ '--f1': p.colors[0], '--f2': p.colors[1], transformOrigin: 'center center' }}
         onClick={(e) => e.stopPropagation()}
-        initial={{ scale: 0.85, y: 40 }}
-        animate={{ scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9, y: 40 }}
-        transition={{ duration: 0.7, ease }}
+        initial={{ scaleX: 0.035, scaleY: 0.9, opacity: 0, y: 30 }}
+        animate={{ scaleX: 1, scaleY: 1, opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scaleX: 0.5, scaleY: 0.94, y: 30 }}
+        transition={{ duration: 0.78, ease }}
       >
         <span className="book-spine" aria-hidden="true" />
         <motion.div
@@ -103,7 +113,7 @@ function Book({ index, setIndex, onClose }) {
           aria-hidden="true"
           initial={mobile ? { rotateX: 0, zIndex: 8 } : { rotateY: 0, zIndex: 8 }}
           animate={mobile ? { rotateX: -180, zIndex: [8, 8, 0] } : { rotateY: -180, zIndex: [8, 8, 0] }}
-          transition={{ duration: 1.25, delay: 0.18, ease: bookEase, times: [0, 0.72, 1] }}
+          transition={{ duration: 1.15, delay: 0.62, ease: bookEase, times: [0, 0.72, 1] }}
         >
           <span className="cover-face cover-front">
             <span className="cover-mark">
@@ -115,6 +125,26 @@ function Book({ index, setIndex, onClose }) {
           </span>
           <span className="cover-face cover-back" />
         </motion.div>
+        <AnimatePresence>
+          {turn && (
+            <motion.div
+              key={`${turn.project.id}-${turn.direction}`}
+              className={`case-page-turn ${turn.direction > 0 ? 'turn-next' : 'turn-prev'}`}
+              style={{ '--turn-a': turn.project.colors[0], '--turn-b': turn.project.colors[1] }}
+              initial={mobile ? { rotateX: 0 } : { rotateY: 0 }}
+              animate={mobile ? { rotateX: turn.direction > 0 ? -180 : 180 } : { rotateY: turn.direction > 0 ? -180 : 180 }}
+              transition={{ duration: 0.82, ease: bookEase }}
+              onAnimationComplete={() => setTurn(null)}
+            >
+              <span className="turn-face turn-front">
+                <small>Case study</small>
+                <strong>{turn.project.name}</strong>
+                <i>{turn.direction > 0 ? 'Next →' : '← Previous'}</i>
+              </span>
+              <span className="turn-face turn-back" />
+            </motion.div>
+          )}
+        </AnimatePresence>
         {/* left page: scrollable website screenshot */}
         <motion.div className="page page-left" {...unfold('left')} transition={unfoldTransition}>
           <AnimatePresence mode="wait">
@@ -197,13 +227,13 @@ function Book({ index, setIndex, onClose }) {
           </AnimatePresence>
 
           <div className="book-foot">
-            <button onClick={() => setIndex((i) => (i - 1 + projects.length) % projects.length)} aria-label="Previous case study">
+            <button onClick={() => go(-1)} disabled={Boolean(turn)} aria-label="Previous case study">
               ←
             </button>
             <span>
               Case study {String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
             </span>
-            <button onClick={() => setIndex((i) => (i + 1) % projects.length)} aria-label="Next case study">
+            <button onClick={() => go(1)} disabled={Boolean(turn)} aria-label="Next case study">
               →
             </button>
           </div>

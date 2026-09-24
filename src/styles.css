@@ -1494,6 +1494,43 @@ p {
 
 @keyframes coverGleam { 0%, 35% { transform: translateX(-110%); } 75%, 100% { transform: translateX(110%); } }
 
+.case-page-turn {
+  position: absolute;
+  z-index: 7;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.case-page-turn.turn-next { left: 50%; transform-origin: left center; }
+.case-page-turn.turn-prev { left: 0; transform-origin: right center; }
+
+.turn-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 42px;
+  background: #fffdf8;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 24px 55px rgba(15, 23, 42, .22);
+}
+
+.turn-next .turn-face { border-radius: 3px 20px 20px 3px; }
+.turn-prev .turn-face { border-radius: 20px 3px 3px 20px; }
+.turn-front { background: linear-gradient(145deg, color-mix(in srgb, var(--turn-a) 9%, #fffdf8), #fffdf8 62%); }
+.turn-front::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,23,42,.1), transparent 12%, transparent 88%, rgba(15,23,42,.04)); }
+.turn-front small { font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--turn-a); }
+.turn-front strong { margin-top: 10px; font: 800 clamp(26px, 3vw, 38px)/1.1 var(--font-display); text-align: center; color: var(--text); }
+.turn-front i { margin-top: 22px; font-size: 11px; font-style: normal; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.turn-back { transform: rotateY(180deg); background: #faf6ec; box-shadow: inset -16px 0 28px rgba(55,43,28,.1); }
+.turn-prev .turn-back { box-shadow: inset 16px 0 28px rgba(55,43,28,.1); }
+
 .page {
   position: relative;
   background: #fffdf8;
@@ -1807,6 +1844,8 @@ p {
   color: #fff;
 }
 
+.book-foot button:disabled { opacity: .45; cursor: default; }
+
 @media (max-width: 800px) {
   .book-backdrop {
     padding: 12px;
@@ -1843,6 +1882,12 @@ p {
   .cover-mark { width: 76px; height: 76px; border-radius: 20px; margin-bottom: 14px; }
   .cover-front strong { font-size: 26px; }
   .cover-front i { margin-top: 16px; }
+
+  .case-page-turn { top: 42%; bottom: 0; width: 100%; left: 0 !important; }
+  .case-page-turn.turn-next { transform-origin: center top; }
+  .case-page-turn.turn-prev { transform-origin: center bottom; }
+  .turn-face { padding: 24px; }
+  .case-page-turn .turn-back { transform: rotateX(180deg); }
 
   .page-left {
     border-radius: 18px 18px 4px 4px;
