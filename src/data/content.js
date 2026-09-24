@@ -215,6 +215,125 @@ export const projects = [
     ],
     colors: ['#b08d57', '#1f3b2d'],
   },
+  {
+    id: 'aggarwal-property',
+    name: 'Aggarwal Property',
+    logo: '/partners/Aggarwal property.png',
+    industry: 'Real Estate',
+    services: ['UGC Shoots', 'Graphic Design', 'Social Media', 'Performance Marketing'],
+    summary: 'Full-funnel real estate content and campaign execution.',
+    detail:
+      'We built a complete digital content engine for Aggarwal Property. Our team produced UGC property shoots both with professional models and in product-led, no-model formats, supported by consistent graphic design, daily social media handling and performance campaigns focused on qualified property enquiries.',
+    highlights: [
+      'Model-led and no-model UGC property shoots',
+      'Campaign creatives and graphic design systems',
+      'Social media planning, publishing and management',
+      'Performance marketing for qualified lead generation',
+    ],
+    colors: ['#2563eb', '#7c3aed'],
+  },
+  {
+    id: 'naughty-rituals',
+    name: 'Naughty Rituals',
+    logo: '/partners/Naughty_Rituals.png',
+    industry: 'Lifestyle & Wellness',
+    services: ['Model-led UGC', 'Social Media Management'],
+    summary: 'Creator-led content designed to build attention and trust.',
+    detail:
+      'For Naughty Rituals, we produced model-led UGC shoots that presented the brand with a confident, creator-first visual language. We also handled its social media presence, turning the content into a consistent feed designed for discovery, engagement and stronger brand recall.',
+    highlights: [
+      'UGC concepts and model-led production',
+      'Platform-ready short-form creative',
+      'Social content planning and publishing',
+      'Consistent visual and communication direction',
+    ],
+    colors: ['#ec4899', '#7c3aed'],
+  },
+  {
+    id: 'threadro',
+    name: 'Threadro',
+    logo: '/partners/Threadro.png',
+    industry: 'Fashion & Apparel',
+    services: ['Social Media Management', 'Performance Marketing'],
+    summary: 'Social-led brand building backed by measurable acquisition.',
+    detail:
+      'We managed Threadro’s social media and performance marketing as one connected growth system. Organic content built a recognisable brand presence while paid campaigns expanded reach, tested creative angles and converted attention into measurable customer action.',
+    highlights: [
+      'Social media strategy and execution',
+      'Content calendars and campaign creatives',
+      'Audience and creative testing',
+      'Performance campaign optimisation',
+    ],
+    colors: ['#111827', '#6366f1'],
+  },
+  {
+    id: 'thrillerrr',
+    name: 'Thrillerrr',
+    logo: '/partners/thrillerrr.png',
+    industry: 'Sexual Wellness',
+    services: ['Performance Marketing', 'Video Shoots', 'Social Media Management'],
+    summary: 'Bold, responsible creative for a modern wellness brand.',
+    detail:
+      'Thrillerrr is a sexual wellness brand for which we combined video production, social media handling and performance marketing. The work balanced an expressive brand voice with platform-aware communication, creating campaigns that could earn attention while remaining clear and responsible.',
+    highlights: [
+      'Campaign-focused video shoots',
+      'Social media strategy and management',
+      'Platform-aware wellness communication',
+      'Paid campaign setup and optimisation',
+    ],
+    colors: ['#ef4444', '#7f1d1d'],
+  },
+  {
+    id: 'tulip-finance',
+    name: 'Tulip Finance',
+    logo: '/partners/Tulip.png',
+    industry: 'Insurance · New Zealand',
+    services: ['Model-led Video Shoots', 'Video Editing', 'Social Media Management'],
+    summary: 'Human-centred finance content for a New Zealand insurance company.',
+    detail:
+      'For New Zealand-based insurance company Tulip Finance, we produced model-led video shoots, edited platform-ready video content and managed its social media presence. The creative made financial communication feel simpler, more human and easier for audiences to engage with.',
+    highlights: [
+      'Model-led campaign video production',
+      'Short-form editing and post-production',
+      'Social media planning and handling',
+      'Clear, audience-friendly insurance communication',
+    ],
+    colors: ['#0f766e', '#38bdf8'],
+  },
+  {
+    id: 'urva-reality',
+    name: 'Urva Reality',
+    logo: '/partners/Urvaa reality.png',
+    industry: 'Real Estate',
+    services: ['Property Shoots', 'Performance Marketing'],
+    summary: 'Property storytelling paired with targeted lead generation.',
+    detail:
+      'We supported Urva Reality with polished property shoots and performance marketing campaigns. The visual content showcased each property clearly and confidently, while paid distribution helped the brand reach relevant prospects and generate actionable enquiries.',
+    highlights: [
+      'Property-focused video production',
+      'Listing and campaign creative direction',
+      'Targeted paid-media campaigns',
+      'Lead-generation optimisation',
+    ],
+    colors: ['#d97706', '#92400e'],
+  },
+  {
+    id: 'vitoxyz-growth',
+    name: 'Vitoxyz',
+    logo: '/partners/Vitoxyz.png',
+    industry: 'Healthcare Technology · Ongoing',
+    services: ['Web Application', 'Mobile Application', 'Social Media', 'Video Editing', 'Performance Marketing'],
+    summary: 'An ongoing healthcare technology and digital growth partnership.',
+    detail:
+      'Vitoxyz is an ongoing healthcare project spanning product development and marketing. We are working on its web application and mobile application while also managing social media, editing video content and running performance marketing to support adoption and growth.',
+    highlights: [
+      'Ongoing web application development',
+      'Ongoing mobile application development',
+      'Social media management and video editing',
+      'Performance campaigns supporting growth',
+    ],
+    colors: ['#0ea5e9', '#14b8a6'],
+  },
 ]
 
 // Testimonials only from clients that have a case study above

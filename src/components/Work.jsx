@@ -19,11 +19,11 @@ function Folder({ p, i, onOpen }) {
     >
       <span className="folder-back" />
       <span className="folder-paper">
-        <img src={p.logo} alt="" loading="lazy" />
+        {p.logo ? <img src={p.logo} alt="" loading="lazy" /> : <span className="project-monogram">{p.name.slice(0, 2)}</span>}
       </span>
       <span className="folder-paper second" />
       <span className="folder-front">
-        <span className="folder-no">0{i + 1}</span>
+        <span className="folder-no">{String(i + 1).padStart(2, '0')}</span>
         <span className="folder-name">{p.name}</span>
         <span className="folder-meta">{p.services.length} services · {p.industry}</span>
         <span className="folder-open">Open case study →</span>
@@ -109,22 +109,32 @@ function Book({ index, setIndex, onClose }) {
               exit={{ opacity: 0, x: 30 }}
               transition={{ duration: 0.4, delay: pageDelay }}
             >
-              <div className="shot-frame" ref={scroller} onScroll={(e) => e.currentTarget.scrollTop > 40 && setScrolled(true)}>
-                <div className="shot-bar">
-                  <i />
-                  <i />
-                  <i />
-                  <span>{p.name}</span>
+              {p.image ? (
+                <>
+                  <div className="shot-frame" ref={scroller} onScroll={(e) => e.currentTarget.scrollTop > 40 && setScrolled(true)}>
+                    <div className="shot-bar">
+                      <i /><i /><i /><span>{p.name}</span>
+                    </div>
+                    <img src={p.image} alt={`${p.name} website designed by Viralstan`} />
+                  </div>
+                  <AnimatePresence>
+                    {!scrolled && (
+                      <motion.span className="scroll-hint" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, transition: { delay: pageDelay + 0.6 } }} exit={{ opacity: 0, transition: { duration: 0.2 } }}>
+                        Scroll to explore the full site ↓
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </>
+              ) : (
+                <div className="brand-showcase">
+                  <span className="brand-lines" aria-hidden="true" />
+                  <div className="brand-mark">
+                    {p.logo ? <img src={p.logo} alt={`${p.name} logo`} /> : <span>{p.name.slice(0, 2)}</span>}
+                  </div>
+                  <span className="brand-kicker">Viralstan × {p.name}</span>
+                  <h4>{p.summary}</h4>
                 </div>
-                <img src={p.image} alt={`${p.name} website designed by Viralstan`} />
-              </div>
-              <AnimatePresence>
-                {!scrolled && (
-                  <motion.span className="scroll-hint" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, transition: { delay: pageDelay + 0.6 } }} exit={{ opacity: 0, transition: { duration: 0.2 } }}>
-                    Scroll to explore the full site ↓
-                  </motion.span>
-                )}
-              </AnimatePresence>
+              )}
             </motion.div>
           </AnimatePresence>
         </motion.div>
@@ -141,7 +151,7 @@ function Book({ index, setIndex, onClose }) {
               transition={{ duration: 0.45, delay: pageDelay }}
             >
               <div className="book-logo">
-                <img src={p.logo} alt={`${p.name} logo`} />
+                {p.logo ? <img src={p.logo} alt={`${p.name} logo`} /> : <span className="project-monogram">{p.name.slice(0, 2)}</span>}
               </div>
               <span className="book-eyebrow">{p.industry}</span>
               <h3>{p.name}</h3>
@@ -153,7 +163,7 @@ function Book({ index, setIndex, onClose }) {
                 ))}
               </div>
               <p className="book-detail">{p.detail}</p>
-              <h4>Website highlights</h4>
+              <h4>Project highlights</h4>
               <ul className="book-list">
                 {p.highlights.map((h, i) => (
                   <motion.li key={h} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: pageDelay + 0.2 + i * 0.07 }}>
