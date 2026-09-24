@@ -174,7 +174,7 @@ export default function Reels() {
             Reels that <span className="grad-text">stop the scroll.</span>
           </>
         }
-        sub="Property shoots, brand ads, web series and fashion reels we produced. Scroll to play, click to watch with sound."
+        sub="Property shoots, brand ads and web series we produced. Scroll to play, click to watch with sound."
       />
       <div className="filters" role="tablist" aria-label="Filter videos">
         {reelFilters.map((f) => (

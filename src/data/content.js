@@ -221,7 +221,7 @@ export const projects = [
 export const testimonials = projects.filter((p) => p.quote).map((p) => ({ name: p.name, role: p.services.join(' · '), text: p.quote }))
 
 // Video portfolio: web versions live in public/reels/<id>.mp4 (+ .jpg poster)
-export const reelFilters = ['All', 'Real Estate', 'Brand Ads', 'Web Series', 'Fashion']
+export const reelFilters = ['All', 'Real Estate', 'Brand Ads', 'Web Series']
 
 export const reels = [
   { id: 'agarwal-shoot-1', title: 'Property Campaign', client: 'Aggarwal Property', category: 'Real Estate' },
