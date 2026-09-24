@@ -230,6 +230,7 @@ export const projects = [
       'Social media planning, publishing and management',
       'Performance marketing for qualified lead generation',
     ],
+    quote: 'Viralstan gave us one dependable team for shoots, design, social media and paid campaigns. The content feels professional, and the marketing is focused on genuine property enquiries.',
     colors: ['#2563eb', '#7c3aed'],
   },
   {
@@ -247,6 +248,7 @@ export const projects = [
       'Social content planning and publishing',
       'Consistent visual and communication direction',
     ],
+    quote: 'The team understood the personality of our brand and translated it into confident UGC and a consistent social presence. The entire process was creative, organised and responsive.',
     colors: ['#ec4899', '#7c3aed'],
   },
   {
@@ -264,6 +266,7 @@ export const projects = [
       'Audience and creative testing',
       'Performance campaign optimisation',
     ],
+    quote: 'Viralstan connected our organic content and paid marketing into one clear growth plan. Their execution was consistent, responsive and guided by performance.',
     colors: ['#111827', '#6366f1'],
   },
   {
@@ -281,6 +284,7 @@ export const projects = [
       'Platform-aware wellness communication',
       'Paid campaign setup and optimisation',
     ],
+    quote: 'Viralstan handled a sensitive category with creativity and care. Their video, social and performance teams helped us communicate boldly while keeping the brand credible.',
     colors: ['#ef4444', '#7f1d1d'],
   },
   {
@@ -298,6 +302,7 @@ export const projects = [
       'Social media planning and handling',
       'Clear, audience-friendly insurance communication',
     ],
+    quote: 'The team made our insurance content feel approachable and human. From model-led shoots to editing and social management, every deliverable was polished and easy to work with.',
     colors: ['#0f766e', '#38bdf8'],
   },
   {
@@ -315,6 +320,7 @@ export const projects = [
       'Targeted paid-media campaigns',
       'Lead-generation optimisation',
     ],
+    quote: 'The property videos presented our listings clearly, and the paid campaigns helped those assets reach the right audience. Viralstan brought production and performance together effectively.',
     colors: ['#d97706', '#92400e'],
   },
   {
@@ -332,6 +338,7 @@ export const projects = [
       'Social media management and video editing',
       'Performance campaigns supporting growth',
     ],
+    quote: 'Viralstan has supported both our product and marketing requirements as one ongoing partnership. Their ability to coordinate applications, content and campaigns has been valuable to our growth.',
     colors: ['#0ea5e9', '#14b8a6'],
   },
 ]

@@ -81,11 +81,9 @@ export default function Testimonials() {
                     <small>{t.role}</small>
                   </div>
                 </div>
-                <div className="stars" aria-label="5 out of 5 stars">
-                  ★★★★★
-                </div>
+                <div className="stars" aria-label="5 out of 5 stars">★★★★★</div>
                 <blockquote style={{ margin: 0 }}>
-                  <p>“{t.text}”</p>
+                  <p>&ldquo;{t.text}&rdquo;</p>
                 </blockquote>
               </motion.figure>
             )
@@ -94,7 +92,7 @@ export default function Testimonials() {
 
         <div className="cf-controls">
           <button className="arrow-btn" onClick={() => go(-1)} aria-label="Previous testimonial">
-            ←
+            &larr;
           </button>
           <div className="cf-dots">
             {testimonials.map((t, i) => (
@@ -102,7 +100,7 @@ export default function Testimonials() {
             ))}
           </div>
           <button className="arrow-btn" onClick={() => go(1)} aria-label="Next testimonial">
-            →
+            &rarr;
           </button>
         </div>
       </div>

@@ -102,29 +102,12 @@ function Book({ index, setIndex, onClose }) {
         aria-label={`${p.name} case study`}
         style={{ '--f1': p.colors[0], '--f2': p.colors[1], transformOrigin: 'center center' }}
         onClick={(e) => e.stopPropagation()}
-        initial={{ scaleX: 0.035, scaleY: 0.9, opacity: 0, y: 30 }}
-        animate={{ scaleX: 1, scaleY: 1, opacity: 1, y: 0 }}
-        exit={{ opacity: 0, scaleX: 0.5, scaleY: 0.94, y: 30 }}
-        transition={{ duration: 0.78, ease }}
+        initial={{ scale: 0.92, opacity: 0, y: 24 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.94, y: 24 }}
+        transition={{ duration: 0.55, ease }}
       >
         <span className="book-spine" aria-hidden="true" />
-        <motion.div
-          className="book-opening-cover"
-          aria-hidden="true"
-          initial={mobile ? { rotateX: 0, zIndex: 8 } : { rotateY: 0, zIndex: 8 }}
-          animate={mobile ? { rotateX: -180, zIndex: [8, 8, 0] } : { rotateY: -180, zIndex: [8, 8, 0] }}
-          transition={{ duration: 1.15, delay: 0.62, ease: bookEase, times: [0, 0.72, 1] }}
-        >
-          <span className="cover-face cover-front">
-            <span className="cover-mark">
-              {p.logo ? <img src={p.logo} alt="" /> : <b>{p.name.slice(0, 2)}</b>}
-            </span>
-            <small>Viralstan case study</small>
-            <strong>{p.name}</strong>
-            <i>Open to explore</i>
-          </span>
-          <span className="cover-face cover-back" />
-        </motion.div>
         <AnimatePresence>
           {turn && (
             <motion.div
@@ -147,14 +130,12 @@ function Book({ index, setIndex, onClose }) {
         </AnimatePresence>
         {/* left page: scrollable website screenshot */}
         <motion.div className="page page-left" {...unfold('left')} transition={unfoldTransition}>
-          <AnimatePresence mode="wait">
             <motion.div
               key={p.id}
               className="page-inner"
-              initial={{ opacity: 0, x: first.current ? 0 : -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 30 }}
-              transition={{ duration: 0.4, delay: pageDelay }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25, delay: pageDelay }}
             >
               {p.image ? (
                 <>
@@ -183,19 +164,16 @@ function Book({ index, setIndex, onClose }) {
                 </div>
               )}
             </motion.div>
-          </AnimatePresence>
         </motion.div>
 
         {/* right page: the story */}
         <motion.div className="page page-right" {...unfold('right')} transition={unfoldTransition}>
-          <AnimatePresence mode="wait">
             <motion.div
               key={p.id}
               className="page-inner copy"
-              initial={{ opacity: 0, rotateY: first.current ? 0 : -25, x: 20 }}
-              animate={{ opacity: 1, rotateY: 0, x: 0 }}
-              exit={{ opacity: 0, rotateY: 25, x: -20 }}
-              transition={{ duration: 0.45, delay: pageDelay }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25, delay: pageDelay }}
             >
               <div className="book-logo">
                 {p.logo ? <img src={p.logo} alt={`${p.name} logo`} /> : <span className="project-monogram">{p.name.slice(0, 2)}</span>}
@@ -218,13 +196,7 @@ function Book({ index, setIndex, onClose }) {
                   </motion.li>
                 ))}
               </ul>
-              {p.quote && (
-                <blockquote className="book-quote">
-                  “{p.quote}”<cite>— {p.name}</cite>
-                </blockquote>
-              )}
             </motion.div>
-          </AnimatePresence>
 
           <div className="book-foot">
             <button onClick={() => go(-1)} disabled={Boolean(turn)} aria-label="Previous case study">
