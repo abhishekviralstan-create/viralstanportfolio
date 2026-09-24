@@ -1417,6 +1417,83 @@ p {
   pointer-events: none;
 }
 
+.book-opening-cover {
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.cover-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  border-radius: 3px 22px 22px 3px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.cover-front {
+  color: #fff;
+  background: linear-gradient(145deg, var(--f1), var(--f2));
+  box-shadow: 18px 28px 55px rgba(15, 23, 42, .34), inset 12px 0 24px rgba(0, 0, 0, .14);
+}
+
+.cover-front::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 2px 15px 15px 2px;
+}
+
+.cover-front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.16) 48%, transparent 68%);
+  transform: translateX(-100%);
+  animation: coverGleam 3.5s ease-in-out infinite;
+}
+
+.cover-back {
+  transform: rotateY(180deg);
+  background: #f7f1e5;
+  box-shadow: inset -18px 0 34px rgba(58, 44, 27, .14), -12px 20px 38px rgba(15, 23, 42, .18);
+}
+
+.cover-mark {
+  position: relative;
+  z-index: 1;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  margin-bottom: 28px;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 22px 44px rgba(15,23,42,.25);
+}
+
+.cover-mark img { max-height: 100%; object-fit: contain; }
+.cover-mark b { color: var(--f1); font: 800 34px var(--font-display); text-transform: uppercase; }
+.cover-front small { position: relative; z-index: 1; font-size: 10px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; opacity: .72; }
+.cover-front strong { position: relative; z-index: 1; margin-top: 8px; max-width: 90%; font: 800 clamp(28px, 3vw, 42px)/1.08 var(--font-display); text-align: center; }
+.cover-front i { position: relative; z-index: 1; margin-top: 34px; font-size: 11px; font-style: normal; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+
+@keyframes coverGleam { 0%, 35% { transform: translateX(-110%); } 75%, 100% { transform: translateX(110%); } }
+
 .page {
   position: relative;
   background: #fffdf8;
@@ -1752,6 +1829,20 @@ p {
     margin: -4px 0 0;
     background: linear-gradient(180deg, #d8d0bd, #f6f1e4 50%, #d8d0bd);
   }
+
+  .book-opening-cover {
+    top: 42%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform-origin: center top;
+  }
+
+  .cover-face { border-radius: 4px 4px 18px 18px; padding: 24px; }
+  .cover-back { transform: rotateX(180deg); }
+  .cover-mark { width: 76px; height: 76px; border-radius: 20px; margin-bottom: 14px; }
+  .cover-front strong { font-size: 26px; }
+  .cover-front i { margin-top: 16px; }
 
   .page-left {
     border-radius: 18px 18px 4px 4px;

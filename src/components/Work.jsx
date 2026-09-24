@@ -98,6 +98,23 @@ function Book({ index, setIndex, onClose }) {
         transition={{ duration: 0.7, ease }}
       >
         <span className="book-spine" aria-hidden="true" />
+        <motion.div
+          className="book-opening-cover"
+          aria-hidden="true"
+          initial={mobile ? { rotateX: 0, zIndex: 8 } : { rotateY: 0, zIndex: 8 }}
+          animate={mobile ? { rotateX: -180, zIndex: [8, 8, 0] } : { rotateY: -180, zIndex: [8, 8, 0] }}
+          transition={{ duration: 1.25, delay: 0.18, ease: bookEase, times: [0, 0.72, 1] }}
+        >
+          <span className="cover-face cover-front">
+            <span className="cover-mark">
+              {p.logo ? <img src={p.logo} alt="" /> : <b>{p.name.slice(0, 2)}</b>}
+            </span>
+            <small>Viralstan case study</small>
+            <strong>{p.name}</strong>
+            <i>Open to explore</i>
+          </span>
+          <span className="cover-face cover-back" />
+        </motion.div>
         {/* left page: scrollable website screenshot */}
         <motion.div className="page page-left" {...unfold('left')} transition={unfoldTransition}>
           <AnimatePresence mode="wait">
